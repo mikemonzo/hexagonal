@@ -33,7 +33,7 @@ public class TaskMapper {
     }
 
     public static EditTaskCommand toCommand(Long id, TaskEditRequest taskEditRequest) {
-        return new EditTaskCommand(TaskId.of(id), taskEditRequest.title(),
+        return new EditTaskCommand(TaskId.of(id), taskEditRequest.name(),
                 taskEditRequest.description(), taskEditRequest.completed());
     }
 }
