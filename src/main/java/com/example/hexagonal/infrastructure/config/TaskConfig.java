@@ -1,8 +1,10 @@
 package com.example.hexagonal.infrastructure.config;
 
+import org.hibernate.sql.Delete;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import com.example.hexagonal.application.usecase.task.create.CreateTaskUseCase;
+import com.example.hexagonal.application.usecase.task.delete.DeleteTaskUseCase;
 import com.example.hexagonal.application.usecase.task.edit.CompleteTaskUseCase;
 import com.example.hexagonal.application.usecase.task.edit.EditTaskUseCase;
 import com.example.hexagonal.application.usecase.task.find.FindTaskUseCase;
@@ -40,6 +42,11 @@ public class TaskConfig {
     @Bean
     public EditTaskUseCase editTaskUseCase() {
         return new EditTaskUseCase(taskRepositoryJpa());
+    }
+
+    @Bean
+    public DeleteTaskUseCase deleteTaskUseCase() {
+        return new DeleteTaskUseCase(taskRepositoryJpa());
     }
 
 }
