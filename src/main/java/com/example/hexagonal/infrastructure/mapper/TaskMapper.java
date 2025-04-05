@@ -1,9 +1,11 @@
 package com.example.hexagonal.infrastructure.mapper;
 
 import com.example.hexagonal.application.usecase.task.create.CreateTaskCommand;
+import com.example.hexagonal.application.usecase.task.edit.EditTaskCommand;
 import com.example.hexagonal.domain.Task;
 import com.example.hexagonal.domain.TaskId;
 import com.example.hexagonal.infrastructure.db.entity.TaskEntity;
+import com.example.hexagonal.infrastructure.web.dto.TaskEditRequest;
 import com.example.hexagonal.infrastructure.web.dto.TaskRequest;
 import com.example.hexagonal.infrastructure.web.dto.TaskResponse;
 
@@ -28,5 +30,10 @@ public class TaskMapper {
     public static TaskResponse toResponse(Task task) {
         return new TaskResponse(task.getId().getValue(), task.getName(), task.getDescription(),
                 task.getCreatedAt(), task.isCompleted());
+    }
+
+    public static EditTaskCommand toCommand(Long id, TaskEditRequest taskEditRequest) {
+        return new EditTaskCommand(TaskId.of(id), taskEditRequest.title(),
+                taskEditRequest.description(), taskEditRequest.completed());
     }
 }

@@ -3,6 +3,8 @@ package com.example.hexagonal.infrastructure.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import com.example.hexagonal.application.usecase.task.create.CreateTaskUseCase;
+import com.example.hexagonal.application.usecase.task.edit.CompleteTaskUseCase;
+import com.example.hexagonal.application.usecase.task.edit.EditTaskUseCase;
 import com.example.hexagonal.application.usecase.task.find.FindTaskUseCase;
 import com.example.hexagonal.domain.repository.TaskRepository;
 import com.example.hexagonal.infrastructure.db.repos.impl.TaskRepositoryImpl;
@@ -28,6 +30,16 @@ public class TaskConfig {
     @Bean
     public FindTaskUseCase findTaskUseCase() {
         return new FindTaskUseCase(taskRepositoryJpa());
+    }
+
+    @Bean
+    public CompleteTaskUseCase completeTaskUseCase() {
+        return new CompleteTaskUseCase(taskRepositoryJpa());
+    }
+
+    @Bean
+    public EditTaskUseCase editTaskUseCase() {
+        return new EditTaskUseCase(taskRepositoryJpa());
     }
 
 }
