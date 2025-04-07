@@ -1,6 +1,5 @@
 package com.example.hexagonal.infrastructure.config;
 
-import org.hibernate.sql.Delete;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import com.example.hexagonal.application.usecase.task.create.CreateTaskUseCase;
