@@ -6,7 +6,7 @@ import com.example.hexagonal.application.usecase.task.find.FindTaskUseCase;
 import com.example.hexagonal.domain.Task;
 import com.example.hexagonal.domain.TaskId;
 import com.example.hexagonal.infrastructure.mapper.TaskMapper;
-import com.example.hexagonal.infrastructure.web.dto.TaskResponse;
+import com.example.hexagonal.infrastructure.web.dto.task.TaskResponse;
 import lombok.RequiredArgsConstructor;
 import java.util.List;
 import org.springframework.web.bind.annotation.GetMapping;

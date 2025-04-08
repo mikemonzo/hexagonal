@@ -1,4 +1,4 @@
-package com.example.hexagonal.infrastructure.web.dto;
+package com.example.hexagonal.infrastructure.web.dto.task;
 
 import java.time.LocalDateTime;
 

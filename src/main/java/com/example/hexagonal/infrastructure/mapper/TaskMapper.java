@@ -5,9 +5,9 @@ import com.example.hexagonal.application.usecase.task.edit.EditTaskCommand;
 import com.example.hexagonal.domain.Task;
 import com.example.hexagonal.domain.TaskId;
 import com.example.hexagonal.infrastructure.db.entity.TaskEntity;
-import com.example.hexagonal.infrastructure.web.dto.TaskEditRequest;
-import com.example.hexagonal.infrastructure.web.dto.TaskRequest;
-import com.example.hexagonal.infrastructure.web.dto.TaskResponse;
+import com.example.hexagonal.infrastructure.web.dto.task.TaskEditRequest;
+import com.example.hexagonal.infrastructure.web.dto.task.TaskRequest;
+import com.example.hexagonal.infrastructure.web.dto.task.TaskResponse;
 
 public class TaskMapper {
 

@@ -9,8 +9,8 @@ import com.example.hexagonal.application.usecase.task.create.CreateTaskCommand;
 import com.example.hexagonal.application.usecase.task.create.CreateTaskUseCase;
 import com.example.hexagonal.domain.Task;
 import com.example.hexagonal.infrastructure.mapper.TaskMapper;
-import com.example.hexagonal.infrastructure.web.dto.TaskRequest;
-import com.example.hexagonal.infrastructure.web.dto.TaskResponse;
+import com.example.hexagonal.infrastructure.web.dto.task.TaskRequest;
+import com.example.hexagonal.infrastructure.web.dto.task.TaskResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 
