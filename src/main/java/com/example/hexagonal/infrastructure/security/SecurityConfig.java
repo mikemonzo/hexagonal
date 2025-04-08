@@ -16,7 +16,9 @@ public class SecurityConfig {
         return http.cors(Customizer.withDefaults())
                 .csrf(csrf -> csrf.ignoringRequestMatchers(("/**")))
                 .authorizeHttpRequests((auth) -> auth.requestMatchers("/auth/**").permitAll()
-                        .requestMatchers("/admin/**").hasRole("ADMIN").anyRequest().authenticated())
+                        .requestMatchers("/h2-console/**").permitAll().requestMatchers("/admin/**")
+                        .hasRole("ADMIN").anyRequest().authenticated())
+                .headers(headers -> headers.frameOptions().sameOrigin())
                 .httpBasic(Customizer.withDefaults()).build();
     }
 }

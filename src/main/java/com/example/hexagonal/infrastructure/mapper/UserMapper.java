@@ -28,7 +28,7 @@ public class UserMapper {
     }
 
     public static CreateUserCommand toCommand(UserRequest userRequest) {
-        return new CreateUserCommand(userRequest.email(), userRequest.name(),
+        return new CreateUserCommand(userRequest.name(), userRequest.email(),
                 userRequest.password());
     }
 
