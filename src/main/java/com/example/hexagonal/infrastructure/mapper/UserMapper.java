@@ -31,4 +31,9 @@ public class UserMapper {
         return new CreateUserCommand(userRequest.email(), userRequest.name(),
                 userRequest.password());
     }
+
+    public static UserResponse toResponse(User user) {
+        return new UserResponse(user.getId().getValue(), user.getName(), user.getEmail(),
+                user.getRole());
+    }
 }

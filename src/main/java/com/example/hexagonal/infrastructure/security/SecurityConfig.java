@@ -15,7 +15,8 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http.cors(Customizer.withDefaults())
                 .csrf(csrf -> csrf.ignoringRequestMatchers(("/**")))
-                .authorizeHttpRequests((auth) -> auth.anyRequest().permitAll())
+                .authorizeHttpRequests((auth) -> auth.requestMatchers("/auth/**").permitAll()
+                        .requestMatchers("/admin/**").hasRole("ADMIN").anyRequest().authenticated())
                 .httpBasic(Customizer.withDefaults()).build();
     }
 }
