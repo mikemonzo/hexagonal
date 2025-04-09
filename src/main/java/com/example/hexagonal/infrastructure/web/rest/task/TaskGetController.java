@@ -22,10 +22,6 @@ public class TaskGetController {
 
     private final FindTaskUseCase findTaskUseCase;
 
-    /*
-     * @GetMapping public List<TaskResponse> allTasks() { return
-     * findTaskUseCase.findAll().stream().map(TaskMapper::toResponse).toList(); }
-     */
     @GetMapping
     public List<TaskResponse> allTasks(@AuthenticationPrincipal AuthUser user) {
         return findTaskUseCase.findAllByUserId(user.getIdAsUserId()).stream()

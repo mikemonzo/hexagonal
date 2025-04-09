@@ -3,6 +3,7 @@ package com.example.hexagonal.infrastructure.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import com.example.hexagonal.application.service.CreateTaskService;
+import com.example.hexagonal.application.service.FindTaskService;
 import com.example.hexagonal.application.usecase.task.create.CreateTaskUseCase;
 import com.example.hexagonal.application.usecase.task.delete.DeleteTaskUseCase;
 import com.example.hexagonal.application.usecase.task.edit.CompleteTaskUseCase;
@@ -54,5 +55,10 @@ public class TaskConfig {
     @Bean
     public CreateTaskService createTaskService() {
         return new CreateTaskService(createTaskUseCase(), findUserUseCase);
+    }
+
+    @Bean
+    public FindTaskService findTaskService() {
+        return new FindTaskService(findTaskUseCase(), findUserUseCase);
     }
 }
