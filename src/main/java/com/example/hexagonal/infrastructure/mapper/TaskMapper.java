@@ -5,10 +5,12 @@ import com.example.hexagonal.application.usecase.task.edit.EditTaskCommand;
 import com.example.hexagonal.domain.Task;
 import com.example.hexagonal.domain.TaskId;
 import com.example.hexagonal.domain.UserId;
+import com.example.hexagonal.domain.UserTask;
 import com.example.hexagonal.infrastructure.db.entity.TaskEntity;
 import com.example.hexagonal.infrastructure.web.dto.task.TaskEditRequest;
 import com.example.hexagonal.infrastructure.web.dto.task.TaskRequest;
 import com.example.hexagonal.infrastructure.web.dto.task.TaskResponse;
+import com.example.hexagonal.infrastructure.web.dto.task.UserTaskResponse;
 
 public class TaskMapper {
 
@@ -33,6 +35,13 @@ public class TaskMapper {
     public static TaskResponse toResponse(Task task) {
         return new TaskResponse(task.getId().getValue(), task.getName(), task.getDescription(),
                 task.getCreatedAt(), task.isCompleted(), task.getAuthor());
+    }
+
+    public static UserTaskResponse toResponse(UserTask userTask) {
+        return new UserTaskResponse(userTask.getTask().getId().getValue(),
+                userTask.getTask().getName(), userTask.getTask().getDescription(),
+                userTask.getTask().getCreatedAt(), userTask.getTask().isCompleted(),
+                userTask.getUser() != null ? UserMapper.toDto(userTask.getUser()) : null);
     }
 
     public static EditTaskCommand toCommand(Long id, TaskEditRequest taskEditRequest) {

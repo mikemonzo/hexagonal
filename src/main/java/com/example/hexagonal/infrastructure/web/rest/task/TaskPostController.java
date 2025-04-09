@@ -6,13 +6,13 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import com.example.hexagonal.application.service.CreateTaskService;
 import com.example.hexagonal.application.usecase.task.create.CreateTaskCommand;
-import com.example.hexagonal.application.usecase.task.create.CreateTaskUseCase;
-import com.example.hexagonal.domain.Task;
+import com.example.hexagonal.domain.UserTask;
 import com.example.hexagonal.infrastructure.mapper.TaskMapper;
 import com.example.hexagonal.infrastructure.security.model.AuthUser;
 import com.example.hexagonal.infrastructure.web.dto.task.TaskRequest;
-import com.example.hexagonal.infrastructure.web.dto.task.TaskResponse;
+import com.example.hexagonal.infrastructure.web.dto.task.UserTaskResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -22,14 +22,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 @RequiredArgsConstructor
 public class TaskPostController {
 
-    private final CreateTaskUseCase createTaskUseCase;
+    private final CreateTaskService createTaskService;
 
     @PostMapping
-    public ResponseEntity<TaskResponse> createTask(@RequestBody TaskRequest taskRequest,
+    public ResponseEntity<UserTaskResponse> createTask(@RequestBody TaskRequest taskRequest,
             @AuthenticationPrincipal AuthUser user) {
         CreateTaskCommand command = TaskMapper.toCommand(taskRequest, user.getIdAsUserId());
-        Task task = createTaskUseCase.create(command);
-        TaskResponse taskResponse = TaskMapper.toResponse(task);
-        return ResponseEntity.status(HttpStatus.CREATED).body(taskResponse);
+        UserTask userTask = createTaskService.createTask(command);
+        return ResponseEntity.status(HttpStatus.CREATED).body(TaskMapper.toResponse(userTask));
     }
 }
