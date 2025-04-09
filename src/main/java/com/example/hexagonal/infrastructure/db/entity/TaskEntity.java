@@ -2,6 +2,7 @@ package com.example.hexagonal.infrastructure.db.entity;
 
 import java.time.LocalDateTime;
 import java.util.Objects;
+import java.util.UUID;
 import org.hibernate.proxy.HibernateProxy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -36,6 +37,7 @@ public class TaskEntity {
     private boolean completed;
     @CreatedDate
     private LocalDateTime createdAt;
+    private UUID author;
 
     @Override
     public final boolean equals(Object o) {
