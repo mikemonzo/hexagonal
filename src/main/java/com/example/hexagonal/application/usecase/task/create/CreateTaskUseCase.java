@@ -10,7 +10,7 @@ public class CreateTaskUseCase {
     private final TaskRepository taskRepository;
 
     public Task create(CreateTaskCommand command) {
-        Task task = Task.builder().name(command.name()).description(command.description())
+        Task task = Task.builder().name(command.title()).description(command.description())
                 .createdAt(LocalDateTime.now()).completed(false).author(command.author()).build();
         task = taskRepository.save(task);
         return task;
