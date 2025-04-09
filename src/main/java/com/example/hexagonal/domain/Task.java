@@ -18,6 +18,7 @@ public class Task {
     private String description;
     private boolean completed;
     private LocalDateTime createdAt;
+    private UserId author;
 
     public void taskCompleted() {
         this.completed = true;
