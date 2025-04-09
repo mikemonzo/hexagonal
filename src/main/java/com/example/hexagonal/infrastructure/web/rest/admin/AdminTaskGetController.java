@@ -5,7 +5,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.example.hexagonal.application.service.FindTaskService;
 import com.example.hexagonal.infrastructure.mapper.TaskMapper;
-import com.example.hexagonal.infrastructure.mapper.UserMapper;
 import com.example.hexagonal.infrastructure.web.dto.task.UserTaskResponse;
 import lombok.RequiredArgsConstructor;
 
